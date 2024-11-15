@@ -1,0 +1,24 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecommerce-platform
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ecommerce
+  template:
+    metadata:
+      labels:
+        app: ecommerce
+    spec:
+      containers:
+      - name: backend
+        image: ecommerce-backend:latest
+        ports:
+        - containerPort: 5000
+      - name: frontend
+        image: ecommerce-frontend:latest
+        ports:
+        - containerPort: 3000
